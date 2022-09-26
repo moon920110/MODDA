@@ -618,10 +618,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 679713051844266036}
   turretTop: {fileID: 6157693990610501667}
   bullet: {fileID: 6996567082809568521, guid: 269ed227176a4924f9eb0e5c8401eb6f, type: 3}
-  fireTimer: 1
-  turret_range: 5
+  fireTimer: 0
   player: {fileID: 0}
-  damage: 150
+  damage: 5
   gameManager: {fileID: 0}
   playerManager: {fileID: 0}
   Ground:
@@ -633,14 +632,14 @@ MonoBehaviour:
   agent: {fileID: 2015720618447778347}
   playerlocation: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
-  sightRange: 7
-  attackRange: 8
+  walkPointRange: 3
+  sightRange: 10
+  attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
-  slider: {fileID: 3375305046805556075}
   t_current_health: 100
   scorePoints: 20
+  slider: {fileID: 3375305046805556075}
 --- !u!136 &5587397885157598913
 CapsuleCollider:
   m_ObjectHideFlags: 0

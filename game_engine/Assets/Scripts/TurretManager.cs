@@ -12,11 +12,11 @@ public class TurretManager : MonoBehaviour
     public GameObject bulletSpawner;
     public GameObject turretTop;
     public GameObject bullet;
-    public float fireTimer = 0.5f;//
+    public float fireTimer = 1f;//
     private bool shootReady;
-    public float turret_range = 8;
+    //public float turret_range = 10; //
     public GameObject player;
-    public float damage = 20f;    
+    //public float damage = 50f;    
     public GameManager gameManager;
     public PlayerManager playerManager;    
     
@@ -27,11 +27,11 @@ public class TurretManager : MonoBehaviour
     //Patrol
     public Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange;
+    public float walkPointRange = 3;
     //Attack
     bool alreadyAttacked;
     //States
-    public float sightRange, attackRange;
+    public float sightRange = 10, attackRange = 5;
     public bool playerInSightRange, playerInAttackRange;    
     public float t_current_health = 100; // Turret's updated health
     public int scorePoints = 20;  // When a turret is destroyed, the player gets 20 points   
@@ -98,8 +98,9 @@ public class TurretManager : MonoBehaviour
         Transform _bullet = Instantiate(bullet.transform, bulletSpawner.transform.position, Quaternion.identity);
         _bullet.transform.rotation = bulletSpawner.transform.rotation;
         RaycastHit t_hit = new RaycastHit(); //don't mind this warning                
-        shootReady = false;
+        //shootReady = false;
         StartCoroutine(FireRate());
+        //shootReady = false;
     }
 
     IEnumerator FireRate()

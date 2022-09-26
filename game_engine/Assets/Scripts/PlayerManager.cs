@@ -28,7 +28,6 @@ public class PlayerManager : MonoBehaviour
     public float Score;
     public Text scoreText;
     public GameObject playerGameObject;
-
     public PlayerSpawnPoints playerSpawnPoints;
     
     //public Transform Destination;
@@ -92,15 +91,7 @@ public class PlayerManager : MonoBehaviour
     {
         p_current_health -= damage;
         healthNumber.text = p_current_health.ToString();
-        if (shakeTime < shakeDuration)
-        {
-            shakeTime += Time.deltaTime;
-            cameraShake();
-        }
-        else if (playerCamera.transform.localRotation != playerCameraOriginalRotation)
-        {
-            playerCamera.transform.localRotation = playerCameraOriginalRotation;
-        }
+        
 
         if (p_current_health <= 0)
         {
@@ -113,13 +104,31 @@ public class PlayerManager : MonoBehaviour
         else //int collision with turrent bullet
         {
             shakeTime = 0;
-            shakeDuration = 0.05f;            
+            shakeDuration = 0.6f;
+            if (shakeTime < shakeDuration)
+            {
+                shakeTime += Time.deltaTime;
+                cameraShake();
+            }
+            else if (playerCamera.transform.localRotation != playerCameraOriginalRotation)
+            {
+                playerCamera.transform.localRotation = playerCameraOriginalRotation;
+            }
         }
     }
     public void PlayerDied()
     {
         shakeTime = 0;
         shakeDuration = 0.2f;
+        if (shakeTime < shakeDuration)
+        {
+            shakeTime += Time.deltaTime;
+            cameraShake();
+        }
+        else if (playerCamera.transform.localRotation != playerCameraOriginalRotation)
+        {
+            playerCamera.transform.localRotation = playerCameraOriginalRotation;
+        }
         MoveOnDie();
         //StartCoroutine(PlayerSpawn());
         p_current_health = 100;
