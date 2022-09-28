@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+
 public class TurretManager : MonoBehaviour
 {
     #region Variables
@@ -12,10 +13,10 @@ public class TurretManager : MonoBehaviour
     public GameObject bulletSpawner;
     public GameObject turretTop;
     public GameObject bullet;
-    public float fireTimer = 1f;//
+    public float fireTimer = 0.1f;//
     private bool shootReady;
-    //public float turret_range = 10; //
-    public GameObject player;
+    
+    public GameObject playerObject;
     //public float damage = 50f;    
     public GameManager gameManager;
     public PlayerManager playerManager;    
@@ -23,7 +24,7 @@ public class TurretManager : MonoBehaviour
     //public LayerMask canBeShot;
     public LayerMask Ground, Player;
     public NavMeshAgent agent;
-    public Transform playerlocation;
+    public Transform playerLocation;
     //Patrol
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -43,14 +44,14 @@ public class TurretManager : MonoBehaviour
 
     public void Awake()
     {
-        playerlocation = GameObject.FindGameObjectWithTag("Player").transform;
+        playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
     }
 
     public void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();        
         slider.maxValue = t_current_health;
         slider.value = t_current_health;
         shootReady = true;
@@ -58,10 +59,10 @@ public class TurretManager : MonoBehaviour
     void Update()
     {
         //detecting player        
-        player = GameObject.FindGameObjectWithTag("Player");
+        //playerObject = GameObject.FindGameObjectWithTag("Player");
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
-
+        playerObject = GameObject.FindGameObjectWithTag("Player");
         if (!playerInSightRange && !playerInAttackRange)
         {
             if (t_current_health > 0) 
@@ -72,9 +73,14 @@ public class TurretManager : MonoBehaviour
 
         if (playerInSightRange && !playerInAttackRange)
         {
-            if (targetLocked)
+            targetLocked = true;
+            if (targetLocked && playerInSightRange)
             {
-                turretTop.transform.LookAt(target.transform);
+                if (playerManager.p_current_health >= 0)
+                {
+                    turretTop.transform.LookAt(target.transform);
+                }
+
             }
             if (t_current_health > 0)
             {
@@ -82,7 +88,7 @@ public class TurretManager : MonoBehaviour
             }
         }
         if (playerInSightRange && playerInAttackRange)
-        {
+        {            
             if (targetLocked)
             {
                 turretTop.transform.LookAt(target.transform);
@@ -124,32 +130,30 @@ public class TurretManager : MonoBehaviour
     }
 
     private void AttackPlayer()
-    {
-        
+    {        
         if (t_current_health > 0)
         {
             agent.SetDestination(transform.position);
-            transform.LookAt(playerlocation);
+            transform.LookAt(playerLocation);
         }
         if (!alreadyAttacked)
         {
             if (targetLocked)
             {
                 turretTop.transform.LookAt(target.transform);
-                turretTop.transform.Rotate(4, 0, 0);
-                
+                turretTop.transform.Rotate(4, 0, 0);                
                 if (shootReady)
                 { Shoot(); }
             }
         }
     }
-    public void Hit(float damage)
+    public void Hit(float damage) //When the Turret Takes Damage
     {
         t_current_health -= damage;        
         slider.value = t_current_health;
         if (t_current_health <= 0)
         {
-            Destroy(gameObject, 0.0001f);
+            Destroy(this, 0.0001f);
             Destroy(GetComponent<NavMeshAgent>());
             Destroy(GetComponent<TurretManager>());
             Destroy(GetComponent<CapsuleCollider>());
@@ -183,7 +187,7 @@ public class TurretManager : MonoBehaviour
     {
         if (playerInSightRange) //&& playerInAttackRange
         {
-            agent.SetDestination(playerlocation.position);
+            agent.SetDestination(playerLocation.position);
         }
     }
    

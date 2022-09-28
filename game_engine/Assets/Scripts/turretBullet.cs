@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
+//using UnityEngine.UI;
 
 public class turretBullet : MonoBehaviour
 {
@@ -9,18 +10,35 @@ public class turretBullet : MonoBehaviour
     public float movementSpeed;
     private GameObject target;
     public GameObject bullet;
-    public GameObject player;    
+    public GameObject playerObject;    
     public float damage;
+    //public float turretFirerate = 100;
+    //float turretFirerateTimer = 0;
+    //public bool isTurretAutomatic;
     #endregion
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-
+        /*if (turretFirerateTimer > 0)
+        {
+            turretFirerateTimer = turretFirerateTimer - Time.deltaTime;
+        }
+        if (turretFirerateTimer <= 0) // && isTurretAutomatic)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+            turretFirerateTimer = 1 / turretFirerate;
+        }
+        if (turretFirerateTimer <= 0)// && !isTurretAutomatic)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+            turretFirerateTimer = 1 / turretFirerate;
+            
+        }*/
     }
     void OnTriggerEnter(Collider other)
     {
@@ -28,8 +46,7 @@ public class turretBullet : MonoBehaviour
         {
             target = other.gameObject;
             Destroy(bullet, 0.0001f);
-            player.GetComponent<PlayerManager>().Hit(damage);
-            
+            playerObject.GetComponent<PlayerManager>().Hit(damage);            
         }
         else if (other.tag == "Wall")
         {

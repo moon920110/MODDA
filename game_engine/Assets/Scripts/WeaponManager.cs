@@ -19,7 +19,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject nonTargetHitParticles;
     public float firerate = 10;
     float firerateTimer = 0;
-    public bool isAutomatic;
+    //public bool isAutomatic;
     public string weaponType;
     public PlayerManager playerManager;
     public GameManager gameManager;
@@ -59,12 +59,12 @@ public class WeaponManager : MonoBehaviour
         {
             firerateTimer = firerateTimer - Time.deltaTime;
         }
-        if (Input.GetButton("Fire1") && firerateTimer <= 0 && isAutomatic)
+        if (Input.GetButton("Fire1") && firerateTimer <= 0)// && isAutomatic)
         {
             Shoot();
             firerateTimer = 1 / firerate;
         }
-        if (Input.GetButtonDown("Fire1") && firerateTimer <= 0 && !isAutomatic)
+        if (Input.GetButtonDown("Fire1") && firerateTimer <= 0)// && !isAutomatic)
         {            
             Shoot();
             firerateTimer = 1 / firerate;

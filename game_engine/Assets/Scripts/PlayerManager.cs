@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
         
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
 
-        p_current_health = 100;
+        p_current_health = 10 ; //Set to 10 for testing
         HealthPickup = GetComponent<AudioSource>();        
     }
     public void Update()
@@ -100,6 +100,7 @@ public class PlayerManager : MonoBehaviour
             //p_current_health = 100;            
             
             PlayerDied();
+            
         }
         else //int collision with turrent bullet
         {
@@ -124,18 +125,21 @@ public class PlayerManager : MonoBehaviour
         {
             shakeTime += Time.deltaTime;
             cameraShake();
+            ///p_current_health = 100;
         }
         else if (playerCamera.transform.localRotation != playerCameraOriginalRotation)
         {
             playerCamera.transform.localRotation = playerCameraOriginalRotation;
         }
+        //p_current_health = 100;
         MoveOnDie();
         //StartCoroutine(PlayerSpawn());
-        p_current_health = 100;
+        //////p_current_health = 100;
     }
 
     private void MoveOnDie()
     {
+        p_current_health = 100;
         characterController.enabled = false;
         playerMovement.enabled = false;
         int selectedIndex = Random.Range(0, playerSpawnPoints.SpawnPoints.Count);

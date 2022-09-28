@@ -5903,7 +5903,7 @@ PrefabInstance:
     - target: {fileID: 6032694156951925623, guid: c468f40e45305a14c8ff8e9d52cf4d2b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.6
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 6032694156951925623, guid: c468f40e45305a14c8ff8e9d52cf4d2b,
         type: 3}
@@ -5913,7 +5913,7 @@ PrefabInstance:
     - target: {fileID: 6032694156951925623, guid: c468f40e45305a14c8ff8e9d52cf4d2b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.3
+      value: 38.5
       objectReference: {fileID: 0}
     - target: {fileID: 6032694156951925623, guid: c468f40e45305a14c8ff8e9d52cf4d2b,
         type: 3}
@@ -7248,7 +7248,6 @@ MonoBehaviour:
   playerObject: {fileID: 0}
   PlayerSpawnPointTag: PlayerSpawners
   PlayerAtStartTag: PlayerSpawnerAtStart
-  playerGameObject: {fileID: 0}
   p_current_health: 10
   deathPenalty: 33
   currentScore: 0

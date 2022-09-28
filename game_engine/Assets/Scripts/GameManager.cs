@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     public string PlayerSpawnPointTag = "PlayerSpawners";
     public string PlayerAtStartTag = "PlayerSpawnerAtStart";
         
-    public GameObject playerGameObject;
     public float p_current_health=10;
     public float deathPenalty = 50;
     public float currentScore =0 ;
@@ -50,15 +49,20 @@ public class GameManager : MonoBehaviour
     public int enemiesKilled;
     public Text enemiesKilledNumber;
     public GameObject pauseMenu;
+
     #endregion
+
+    private void Awake()
+    {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+    }
     void Start()
     {        
         recoveryBox = GameObject.Find("RecoveryBox").GetComponent<RecoveryBox>();        
         spawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawners");        
         recoveryPoints = GameObject.FindGameObjectsWithTag("RecoverySpawners");
-        playerObject = (GameObject)(Resources.Load("Player"));
-        turretPrefab= (GameObject)(Resources.Load("TurretAI"));        
-        playerGameObject = GameObject.FindGameObjectWithTag("Player"); 
+        //playerObject = (GameObject)(Resources.Load("Player"));
+        turretPrefab= (GameObject)(Resources.Load("TurretAI"));
         PlayerSpawnPointAtStart = GameObject.FindGameObjectWithTag("PlayerSpawnerAtStart");
         currentTime = startMinutes * 60;
         StartTimer();
