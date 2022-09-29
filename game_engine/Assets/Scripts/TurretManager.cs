@@ -13,7 +13,8 @@ public class TurretManager : MonoBehaviour
     public GameObject bulletSpawner;
     public GameObject turretTop;
     public GameObject bullet;
-    public float fireTimer = 0.1f;//
+    public float bulletMovementSpeed;
+    public float fireTimer = 1f;//
     private bool shootReady;
     
     public GameObject playerObject;
@@ -47,6 +48,7 @@ public class TurretManager : MonoBehaviour
         playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
         playerObject = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        target = playerObject;
     }
 
     public void Start()
@@ -63,6 +65,8 @@ public class TurretManager : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
         playerObject = GameObject.FindGameObjectWithTag("Player");
+        slider.gameObject.transform.LookAt(playerObject.transform.position);
+
         if (!playerInSightRange && !playerInAttackRange)
         {
             if (t_current_health > 0) 
@@ -76,10 +80,12 @@ public class TurretManager : MonoBehaviour
             targetLocked = true;
             if (targetLocked && playerInSightRange)
             {
-                if (playerManager.p_current_health >= 0)
+                float p_current_health = playerObject.GetComponent<PlayerManager>().p_current_health;
+                /*if (p_current_health > 0)
                 {
+                    Debug.Log(p_current_health);
                     turretTop.transform.LookAt(target.transform);
-                }
+                }*/
 
             }
             if (t_current_health > 0)
@@ -100,10 +106,8 @@ public class TurretManager : MonoBehaviour
         }        
     }
     public void Shoot()
-    {
-        Transform _bullet = Instantiate(bullet.transform, bulletSpawner.transform.position, Quaternion.identity);
-        _bullet.transform.rotation = bulletSpawner.transform.rotation;
-        RaycastHit t_hit = new RaycastHit(); //don't mind this warning                
+    {       
+        //RaycastHit t_hit = new RaycastHit(); //don't mind this warning                
         //shootReady = false;
         StartCoroutine(FireRate());
         //shootReady = false;
@@ -111,7 +115,13 @@ public class TurretManager : MonoBehaviour
 
     IEnumerator FireRate()
     {
-        yield return new WaitForSeconds(fireTimer);
+        //Transform _bullet = 
+         GameObject.Instantiate(bullet.transform, bulletSpawner.transform.position, bulletSpawner.transform.rotation);// Quaternion.identity);
+        //Rigidbody _bulletRigidBody = _bullet.GetComponent<Rigidbody>();
+        //_bullet.transform.rotation = bulletSpawner.transform.rotation;
+        //_bulletRigidBody.AddForce(_bulletRigidBody.transform.forward * bulletMovementSpeed);
+        //RaycastHit t_hit = new RaycastHit();
+        yield return new WaitForSeconds(2);//(fireTimer);
         shootReady = true;
     }
     

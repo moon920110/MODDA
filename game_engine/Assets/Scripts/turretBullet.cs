@@ -24,6 +24,7 @@ public class turretBullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+
         /*if (turretFirerateTimer > 0)
         {
             turretFirerateTimer = turretFirerateTimer - Time.deltaTime;

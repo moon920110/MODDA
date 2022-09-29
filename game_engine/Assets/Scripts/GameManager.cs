@@ -66,12 +66,14 @@ public class GameManager : MonoBehaviour
         PlayerSpawnPointAtStart = GameObject.FindGameObjectWithTag("PlayerSpawnerAtStart");
         currentTime = startMinutes * 60;
         StartTimer();
+        //playerObject.GetComponent<PlayerManager().>
     }
 
     void Update()
     {
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
-        
+
+        #region Countdown Timer
         if (timerActive == true)
         {
             currentTime = currentTime - Time.deltaTime;
@@ -90,10 +92,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("game over");
             EndGame(); 
         }
+        #endregion
+
+        
     }        
         public void EndGame()
-    {
-        //timeManager.stopCountdown();
+    {        
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         endScreen.SetActive(true);

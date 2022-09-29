@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8124836440601951783}
   - component: {fileID: 3584148722848882281}
   - component: {fileID: 8415879278148978961}
-  - component: {fileID: 9096259511415353752}
   - component: {fileID: 4088479524794758740}
   - component: {fileID: -573979503827347705}
+  - component: {fileID: 7850802074185431635}
   m_Layer: 0
   m_Name: turretBullet
   m_TagString: turretBullet
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9096259511415353752
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6996567082809568521}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4088479524794758740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62339d385d3b04049871927618f477f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
+  movementSpeed: 15
   bullet: {fileID: 6996567082809568521}
-  player: {fileID: 0}
+  playerObject: {fileID: 1220269433656336692, guid: 8901efe1b7c4c1e42a16a3070b816aa9,
+    type: 3}
   damage: 3
 --- !u!54 &-573979503827347705
 Rigidbody:
@@ -131,3 +119,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7850802074185431635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996567082809568521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

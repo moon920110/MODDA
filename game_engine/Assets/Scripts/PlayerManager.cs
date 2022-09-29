@@ -139,14 +139,15 @@ public class PlayerManager : MonoBehaviour
 
     private void MoveOnDie()
     {
-        p_current_health = 100;
+        
         characterController.enabled = false;
         playerMovement.enabled = false;
         int selectedIndex = Random.Range(0, playerSpawnPoints.SpawnPoints.Count);
         transform.position = playerSpawnPoints.SpawnPoints[selectedIndex].position;
         characterController.enabled = true;
         playerMovement.enabled = true;
-        
+        p_current_health = 100;
+        healthNumber.text = p_current_health.ToString();
         Debug.Log("moved! 2");
         
     }
