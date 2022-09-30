@@ -366,6 +366,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2193487255970551571, guid: 8901efe1b7c4c1e42a16a3070b816aa9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6781296228783934430, guid: 8901efe1b7c4c1e42a16a3070b816aa9,
         type: 3}
       propertyPath: cursorLocked

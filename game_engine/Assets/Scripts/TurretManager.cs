@@ -95,10 +95,10 @@ public class TurretManager : MonoBehaviour
         }
         if (playerInSightRange && playerInAttackRange)
         {            
-            if (targetLocked)
+            /*if (targetLocked)
             {
                 turretTop.transform.LookAt(target.transform);
-            }
+            }*/
             if (t_current_health > 0)
             {
                 AttackPlayer();
@@ -163,7 +163,7 @@ public class TurretManager : MonoBehaviour
         slider.value = t_current_health;
         if (t_current_health <= 0)
         {
-            Destroy(this, 0.0001f);
+            Destroy(this.gameObject, 0.0001f);
             Destroy(GetComponent<NavMeshAgent>());
             Destroy(GetComponent<TurretManager>());
             Destroy(GetComponent<CapsuleCollider>());

@@ -46,7 +46,7 @@ public class turretBullet : MonoBehaviour
         if (other.tag == "Player")
         {
             target = other.gameObject;
-            Destroy(bullet, 0.0001f);
+            Destroy(bullet, 0.000001f);
             playerObject.GetComponent<PlayerManager>().Hit(damage);            
         }
         else if (other.tag == "Wall")

@@ -135,6 +135,8 @@ public class PlayerManager : MonoBehaviour
         MoveOnDie();
         //StartCoroutine(PlayerSpawn());
         //////p_current_health = 100;
+        p_current_health = 100;
+        healthNumber.text = p_current_health.ToString();
     }
 
     private void MoveOnDie()
@@ -146,8 +148,7 @@ public class PlayerManager : MonoBehaviour
         transform.position = playerSpawnPoints.SpawnPoints[selectedIndex].position;
         characterController.enabled = true;
         playerMovement.enabled = true;
-        p_current_health = 100;
-        healthNumber.text = p_current_health.ToString();
+        
         Debug.Log("moved! 2");
         
     }
