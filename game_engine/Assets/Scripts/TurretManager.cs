@@ -148,9 +148,10 @@ public class TurretManager : MonoBehaviour
         }
         if (!alreadyAttacked)
         {
+            //targetLocked = true;
             if (targetLocked)
             {
-                turretTop.transform.LookAt(target.transform);
+                turretTop.transform.LookAt(playerObject.transform);
                 turretTop.transform.Rotate(4, 0, 0);                
                 if (shootReady)
                 { Shoot(); }

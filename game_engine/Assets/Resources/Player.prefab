@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6add4429fb91a3a4eba1871c4333c91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorLocked: 0
+  cursorLocked: 1
   mouseSensitivity: 500
   playerBody: {fileID: 1196321099378807030}
   maxAngle: 60
@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 741670}
   - component: {fileID: 741671}
   - component: {fileID: 741672}
+  - component: {fileID: 719029084}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -376,6 +377,8 @@ MonoBehaviour:
   healthNumber: {fileID: 0}
   Score: 0
   scoreText: {fileID: 0}
+  numberofDeath: 0
+  deathText: {fileID: 0}
   playerGameObject: {fileID: 0}
   playerSpawnPoints: {fileID: 0}
 --- !u!95 &2193487256929687635
@@ -407,7 +410,7 @@ SphereCollider:
   m_GameObject: {fileID: 1220269433656336692}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0.4, z: 0}
@@ -641,6 +644,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1818360609 &719029084
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220269433656336692}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 220, z: 0}
+  m_RotationOffset: {x: 0, y: 200, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources: []
 --- !u!1 &1752838643241923737
 GameObject:
   m_ObjectHideFlags: 0

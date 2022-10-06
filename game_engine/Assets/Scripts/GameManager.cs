@@ -66,12 +66,16 @@ public class GameManager : MonoBehaviour
         PlayerSpawnPointAtStart = GameObject.FindGameObjectWithTag("PlayerSpawnerAtStart");
         currentTime = startMinutes * 60;
         StartTimer();
-        //playerObject.GetComponent<PlayerManager().>
+        
+        turretManager = GameObject.FindWithTag("Turret").GetComponent<TurretManager>();
+        
+
+
     }
 
     void Update()
     {
-        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+        //GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
 
         #region Countdown Timer
         if (timerActive == true)
@@ -94,7 +98,19 @@ public class GameManager : MonoBehaviour
         }
         #endregion
 
-        
+        //variable access control, temporary part
+
+        //Debug.Log("Turret health");
+        //Debug.Log(turretManager.t_current_health);
+        //Debug.Log(deathPenalty);
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameObject playerObject = GameObject.Find("Player");
+            PlayerManager playerManager = playerObject.GetComponent<PlayerManager>();
+            Debug.Log("Player health ");
+            Debug.Log(playerManager.p_current_health);
+        }
+
     }        
         public void EndGame()
     {        

@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour
     public Text healthNumber;
     public float Score;
     public Text scoreText;
+    public float numberofDeath;
+    public Text deathText;
     public GameObject playerGameObject;
     public PlayerSpawnPoints playerSpawnPoints;
     
@@ -49,7 +51,9 @@ public class PlayerManager : MonoBehaviour
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
 
         p_current_health = 10 ; //Set to 10 for testing
-        HealthPickup = GetComponent<AudioSource>();        
+        HealthPickup = GetComponent<AudioSource>();
+        numberofDeath = 0;
+
     }
     public void Update()
     {
@@ -137,6 +141,9 @@ public class PlayerManager : MonoBehaviour
         //////p_current_health = 100;
         p_current_health = 100;
         healthNumber.text = p_current_health.ToString();
+        numberofDeath = numberofDeath+1;
+
+        deathText.text = numberofDeath.ToString();
     }
 
     private void MoveOnDie()
