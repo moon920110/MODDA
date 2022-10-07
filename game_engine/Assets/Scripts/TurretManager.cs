@@ -17,6 +17,8 @@ public class TurretManager : MonoBehaviour
     public float fireTimer = 1f;//
     private bool shootReady;
     
+
+
     public GameObject playerObject;
     //public float damage = 50f;    
     public GameManager gameManager;
@@ -57,6 +59,7 @@ public class TurretManager : MonoBehaviour
         slider.maxValue = t_current_health;
         slider.value = t_current_health;
         shootReady = true;
+        
     }
     void Update()
     {
@@ -168,6 +171,8 @@ public class TurretManager : MonoBehaviour
             Destroy(GetComponent<NavMeshAgent>());
             Destroy(GetComponent<TurretManager>());
             Destroy(GetComponent<CapsuleCollider>());
+            //numberofDestroyed = numberofDestroyed + 1;
+            //Debug.Log("Number of destroyed on turret script: " + numberofDestroyed);
         }        
     }
 

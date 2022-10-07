@@ -29,9 +29,11 @@ public class PlayerManager : MonoBehaviour
     public Text scoreText;
     public float numberofDeath;
     public Text deathText;
+    
     public GameObject playerGameObject;
     public PlayerSpawnPoints playerSpawnPoints;
-    
+    public CanvasGroup deathPanel;
+
     //public Transform Destination;
     //public Transform playerLocation;
     #endregion
@@ -46,7 +48,7 @@ public class PlayerManager : MonoBehaviour
         weaponSwitch(0);
         
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        recoveryBox = GameObject.Find("RecoveryBox").GetComponent<RecoveryBox>();
+        recoveryBox = GameObject.Find("RecoveryBoxObject").GetComponent<RecoveryBox>();
         
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
 
@@ -75,6 +77,10 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))//to test out player spawn
         {
             MoveOnDie();
+        }
+        if (deathPanel.alpha > 0)
+        {
+            deathPanel.alpha -= Time.deltaTime;
         }
     }
     public void Recovered(float recoveryAmount)
@@ -135,15 +141,16 @@ public class PlayerManager : MonoBehaviour
         {
             playerCamera.transform.localRotation = playerCameraOriginalRotation;
         }
+        deathPanel.alpha = 1;
         //p_current_health = 100;
         MoveOnDie();
         //StartCoroutine(PlayerSpawn());
         //////p_current_health = 100;
-        p_current_health = 100;
+        p_current_health = 20;
         healthNumber.text = p_current_health.ToString();
         numberofDeath = numberofDeath+1;
-
         deathText.text = numberofDeath.ToString();
+        
     }
 
     private void MoveOnDie()
@@ -154,8 +161,7 @@ public class PlayerManager : MonoBehaviour
         int selectedIndex = Random.Range(0, playerSpawnPoints.SpawnPoints.Count);
         transform.position = playerSpawnPoints.SpawnPoints[selectedIndex].position;
         characterController.enabled = true;
-        playerMovement.enabled = true;
-        
+        playerMovement.enabled = true;        
         Debug.Log("moved! 2");
         
     }

@@ -12,13 +12,18 @@ public class WeaponManager : MonoBehaviour
     public Animator playerAnimator;
     public ParticleSystem muzzleFlash;
     public GameObject hitParticles;
-    public AudioClip gunshot;    
+    public AudioClip gunshot;
     public WeaponSway weaponSway;
     float swaySensitivity;
-    public GameObject crosshair;    
+    public GameObject playerBullet;
+    
+    public GameObject p_bulletSpawner;
+    public GameObject crosshair;
     public GameObject nonTargetHitParticles;
     public float firerate = 10;
     float firerateTimer = 0;
+    public float numberofDestroyed;
+
     //public bool isAutomatic;
     public string weaponType;
     public PlayerManager playerManager;
@@ -32,7 +37,7 @@ public class WeaponManager : MonoBehaviour
         swaySensitivity = weaponSway.swaySensitivity;
         MachineGun = GetComponent<AudioSource>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
+        numberofDestroyed = 0;
     }
 
     private void OnEnable()
@@ -47,14 +52,14 @@ public class WeaponManager : MonoBehaviour
         //Debug.Log("Reload Interupted");
     }*/
 
-    
+
     void Update()
     {
         if (playerAnimator.GetBool("isShooting"))
         {
             playerAnimator.SetBool("isShooting", false);
 
-        }        
+        }
         if (firerateTimer > 0)
         {
             firerateTimer = firerateTimer - Time.deltaTime;
@@ -65,7 +70,7 @@ public class WeaponManager : MonoBehaviour
             firerateTimer = 1 / firerate;
         }
         if (Input.GetButtonDown("Fire1") && firerateTimer <= 0)// && !isAutomatic)
-        {            
+        {
             Shoot();
             firerateTimer = 1 / firerate;
         }
@@ -82,13 +87,15 @@ public class WeaponManager : MonoBehaviour
             weaponSway.swaySensitivity = swaySensitivity;
             crosshair.SetActive(true);
         }
+        
     }
 
     void Shoot()
     {
         muzzleFlash.Play();
-        MachineGun.Play();        
+        MachineGun.Play();
         playerAnimator.SetBool("isShooting", true);
+        GameObject.Instantiate(playerBullet.transform, p_bulletSpawner.transform.position, p_bulletSpawner.transform.rotation);
         RaycastHit hit;
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, range))
         {
@@ -99,7 +106,9 @@ public class WeaponManager : MonoBehaviour
                 if (turretManager.t_current_health <= 0)
                 {
                     playerManager.Score += turretManager.scorePoints; //adding score to the player                    
-                    Debug.Log("Enemy Down!");
+                    numberofDestroyed = numberofDestroyed + 1;
+                    //Debug.Log("Number of destroyed on weapon script: " + numberofDestroyed);
+
                 }
                 GameObject InstParticles = Instantiate(hitParticles, hit.point, Quaternion.LookRotation(hit.normal));
                 InstParticles.transform.parent = hit.transform;
@@ -119,6 +128,6 @@ public class WeaponManager : MonoBehaviour
         weaponSway.swaySensitivity = swaySensitivity / 3;
         //crosshair.SetActive(false);
     }
-
     
+  
 }

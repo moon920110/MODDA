@@ -16,7 +16,8 @@ public class RecoveryBox : MonoBehaviour
     #endregion
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
     }
     void Update()
     {

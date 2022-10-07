@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public float currentTime;
     public int startMinutes;
     public Text currentTimeText;
-    public bool timerActive = false;
+    public bool timerActive; //= false;
 
     //Access to other Scripts
     public PlayerManager playerManager;
@@ -41,14 +41,17 @@ public class GameManager : MonoBehaviour
     public TurretManager turretManager;
     public TurretSpawner turretSpawner;
     public WeaponManager weaponManager;
+    //public GameObject TurretAI;
 
     //UI some of them are not assigned yet
     public GameObject endScreen;
     public float endScore;
     public Text endScoreText;
-    public int enemiesKilled;
-    public Text enemiesKilledNumber;
+    public Text destroyedText;
+    //public int enemiesKilled;
+    //public Text enemiesKilledNumber;
     public GameObject pauseMenu;
+
 
     #endregion
 
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {        
-        recoveryBox = GameObject.Find("RecoveryBox").GetComponent<RecoveryBox>();        
+        recoveryBox = GameObject.Find("RecoveryBoxObject").GetComponent<RecoveryBox>();        
         spawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawners");        
         recoveryPoints = GameObject.FindGameObjectsWithTag("RecoverySpawners");
         //playerObject = (GameObject)(Resources.Load("Player"));
@@ -107,9 +110,30 @@ public class GameManager : MonoBehaviour
         {
             GameObject playerObject = GameObject.Find("Player");
             PlayerManager playerManager = playerObject.GetComponent<PlayerManager>();
-            Debug.Log("Player health ");
-            Debug.Log(playerManager.p_current_health);
+            Debug.Log("Player health: " + playerManager.p_current_health);            
+            Debug.Log("Number of deaths: " + playerManager.numberofDeath);
+            
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //Access to TurretManager script
+            GameObject TurretAI = GameObject.FindGameObjectWithTag("Turret");
+            TurretManager turretManager = TurretAI.GetComponent<TurretManager>();
+            
+            //Access to TurretSpawner script
+            GameObject EnemySpawner = GameObject.Find("EnemySpawner");
+            TurretSpawner turretSpawner = EnemySpawner.GetComponent<TurretSpawner>();
+            //Access to RecoveryBox script
+            GameObject RecoveryBox = GameObject.Find("RecoveryBoxObject");
+            RecoveryBox recoveryBox = RecoveryBox.GetComponent<RecoveryBox>();
+            //Access to RecoverySpawner script
+            GameObject RecoverySpawner = GameObject.Find("RecoverySpawnPoints");
+            RecoverySpawner recoverySpawner = RecoverySpawner.GetComponent<RecoverySpawner>();
+        }
+        //Access to WeaponManager script
+        GameObject WeaponHolder = GameObject.FindGameObjectWithTag("Weapon"); //pistol shotgun rifle
+        WeaponManager weaponManager = WeaponHolder.GetComponent<WeaponManager>();
+        destroyedText.text = weaponManager.numberofDestroyed.ToString();
 
     }        
         public void EndGame()

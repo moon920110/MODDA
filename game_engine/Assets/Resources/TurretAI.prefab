@@ -634,8 +634,8 @@ MonoBehaviour:
   playerLocation: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 3
-  sightRange: 10
-  attackRange: 5
+  sightRange: 15
+  attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
   t_current_health: 100
