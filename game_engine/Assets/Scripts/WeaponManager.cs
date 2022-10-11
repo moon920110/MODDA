@@ -24,6 +24,12 @@ public class WeaponManager : MonoBehaviour
     float firerateTimer = 0;
     public float numberofDestroyed;
 
+    //Player's Bullet
+    /*public GameObject p_bulletPrefab;
+    public Transform p_bulletSpawn;
+    public float bulletSpeed = 30;
+    public float lifeTime = 3;*/
+
     //public bool isAutomatic;
     public string weaponType;
     public PlayerManager playerManager;
@@ -96,7 +102,9 @@ public class WeaponManager : MonoBehaviour
         MachineGun.Play();
         playerAnimator.SetBool("isShooting", true);
         GameObject.Instantiate(playerBullet.transform, p_bulletSpawner.transform.position, p_bulletSpawner.transform.rotation);
+        
         RaycastHit hit;
+
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, range))
         {
             TurretManager turretManager = hit.transform.GetComponent<TurretManager>();
@@ -112,15 +120,34 @@ public class WeaponManager : MonoBehaviour
                 }
                 GameObject InstParticles = Instantiate(hitParticles, hit.point, Quaternion.LookRotation(hit.normal));
                 InstParticles.transform.parent = hit.transform;
-                Destroy(InstParticles, 0.5f);
+                Destroy(InstParticles, 0.005f);
             }
             else
             {
                 GameObject InstParticles = Instantiate(nonTargetHitParticles, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(InstParticles, 0.32f);
+                Destroy(InstParticles, 0.032f);
             }
         }
+        /*p_bulletPrefab = (GameObject)Resources.Load("playerBullet");
+        GameObject bullet = Instantiate(p_bulletPrefab);
+        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), p_bulletSpawn.parent.GetComponent<Collider>());
+
+        bullet.transform.position = p_bulletSpawn.position;
+
+        Vector3 rotation = bullet.transform.rotation.eulerAngles;
+
+        bullet.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
+
+        bullet.GetComponent<Rigidbody>().AddForce(p_bulletSpawn.forward * bulletSpeed, ForceMode.Impulse);
+
+        StartCoroutine(DestroyBullerAfterTime(bullet, lifeTime));*/
+    
     }
+    /*private IEnumerator DestroyBullerAfterTime(GameObject bullet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(bullet);
+    }*/
 
     void Aim()
     {

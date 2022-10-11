@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6996567082809568521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.513658, y: 4.00383, z: -7.93}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.008, y: 0.008, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,14 +94,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6996567082809568521}
   serializedVersion: 2
-  m_Mass: 0.0000001
+  m_Mass: 0.01
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 94
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &7850802074185431635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -130,4 +130,6 @@ MonoBehaviour:
   playerBullet: {fileID: 6996567082809568521}
   p_bulletSpeed: 50
   playersTarget: {fileID: 0}
+  p_bulletPrefab: {fileID: 0}
+  p_bulletSpawn: {fileID: 0}
   Enemy: {fileID: 0}
