@@ -5538,7 +5538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 0}
-  range: 100
+  range: 1000
   damage: 10
   playerAnimator: {fileID: 0}
   muzzleFlash: {fileID: 0}
@@ -5552,7 +5552,7 @@ MonoBehaviour:
   crosshair: {fileID: 0}
   nonTargetHitParticles: {fileID: 7258235982769148960, guid: 74f67dd13b6d5b74e8a21f45cf5ea933,
     type: 3}
-  firerate: 10
+  firerate: 4
   numberofDestroyed: 0
   weaponType: Pistol
   playerManager: {fileID: 0}

@@ -55,7 +55,7 @@ public class PlayerBullet : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        Destroy(playerBullet, 0.000001f);
+        Destroy(playerBullet, 0.0001f);
         /*if (other.tag == "Turret")
         {
             playersTarget = other.gameObject;

@@ -101,13 +101,14 @@ public class WeaponManager : MonoBehaviour
         muzzleFlash.Play();
         MachineGun.Play();
         playerAnimator.SetBool("isShooting", true);
-        GameObject.Instantiate(playerBullet.transform, p_bulletSpawner.transform.position, p_bulletSpawner.transform.rotation);
-        
+        //GameObject.Instantiate(playerBullet.transform, p_bulletSpawner.transform.position, p_bulletSpawner.transform.rotation);
+        StartCoroutine(bulletFirerate());
         RaycastHit hit;
 
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, range))
         {
             TurretManager turretManager = hit.transform.GetComponent<TurretManager>();
+            StartCoroutine(bulletFirerate());
             if (turretManager != null)
             {
                 turretManager.Hit(damage);
@@ -127,34 +128,19 @@ public class WeaponManager : MonoBehaviour
                 GameObject InstParticles = Instantiate(nonTargetHitParticles, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(InstParticles, 0.032f);
             }
-        }
-        /*p_bulletPrefab = (GameObject)Resources.Load("playerBullet");
-        GameObject bullet = Instantiate(p_bulletPrefab);
-        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), p_bulletSpawn.parent.GetComponent<Collider>());
-
-        bullet.transform.position = p_bulletSpawn.position;
-
-        Vector3 rotation = bullet.transform.rotation.eulerAngles;
-
-        bullet.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
-
-        bullet.GetComponent<Rigidbody>().AddForce(p_bulletSpawn.forward * bulletSpeed, ForceMode.Impulse);
-
-        StartCoroutine(DestroyBullerAfterTime(bullet, lifeTime));*/
-    
+        }           
     }
-    /*private IEnumerator DestroyBullerAfterTime(GameObject bullet, float delay)
+    IEnumerator bulletFirerate() 
     {
-        yield return new WaitForSeconds(delay);
-        Destroy(bullet);
-    }*/
+        GameObject.Instantiate(playerBullet.transform, p_bulletSpawner.transform.position, p_bulletSpawner.transform.rotation);
+        yield return new WaitForSeconds(firerate);
+
+    }
 
     void Aim()
     {
         //playerAnimator.SetBool("isAiming", true);
         weaponSway.swaySensitivity = swaySensitivity / 3;
         //crosshair.SetActive(false);
-    }
-    
-  
+    } 
 }

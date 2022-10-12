@@ -2932,12 +2932,12 @@ PrefabInstance:
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6157693990827380688, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
@@ -2998,6 +2998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157693990827380689, guid: 44d20a0224669bb429780c7b55e0a3c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20a0224669bb429780c7b55e0a3c2, type: 3}
@@ -4709,12 +4714,12 @@ PrefabInstance:
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6157693990827380688, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
@@ -4775,6 +4780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretAI (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157693990827380689, guid: 44d20a0224669bb429780c7b55e0a3c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20a0224669bb429780c7b55e0a3c2, type: 3}
@@ -4967,12 +4977,12 @@ PrefabInstance:
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6157693990827380688, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
@@ -5033,6 +5043,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretAI (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157693990827380689, guid: 44d20a0224669bb429780c7b55e0a3c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20a0224669bb429780c7b55e0a3c2, type: 3}
@@ -5705,12 +5720,12 @@ PrefabInstance:
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6157693990827380688, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
@@ -5771,6 +5786,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretAI (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157693990827380689, guid: 44d20a0224669bb429780c7b55e0a3c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20a0224669bb429780c7b55e0a3c2, type: 3}
@@ -9582,12 +9602,12 @@ PrefabInstance:
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6157693990827380688, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
@@ -9648,6 +9668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretAI (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157693990827380689, guid: 44d20a0224669bb429780c7b55e0a3c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20a0224669bb429780c7b55e0a3c2, type: 3}
@@ -10592,12 +10617,12 @@ PrefabInstance:
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3375305048566800842, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6157693990827380688, guid: 44d20a0224669bb429780c7b55e0a3c2,
         type: 3}
@@ -10658,6 +10683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretAI (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157693990827380689, guid: 44d20a0224669bb429780c7b55e0a3c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20a0224669bb429780c7b55e0a3c2, type: 3}

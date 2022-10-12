@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 0}
-  range: 100
+  range: 1000
   damage: 25
   playerAnimator: {fileID: 0}
   muzzleFlash: {fileID: 6642439457645842662}
@@ -907,11 +907,13 @@ MonoBehaviour:
     type: 3}
   gunshot: {fileID: 8300000, guid: 42dc462760399f045a6950b4c7474e7a, type: 3}
   weaponSway: {fileID: 0}
+  playerBullet: {fileID: 0}
+  p_bulletSpawner: {fileID: 0}
   crosshair: {fileID: 0}
   nonTargetHitParticles: {fileID: 7258235982769148960, guid: 74f67dd13b6d5b74e8a21f45cf5ea933,
     type: 3}
-  firerate: 10
-  isAutomatic: 1
+  firerate: 20
+  numberofDestroyed: 0
   weaponType: Rifle
   playerManager: {fileID: 0}
   gameManager: {fileID: 0}
