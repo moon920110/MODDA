@@ -14,6 +14,7 @@ TagManager:
   - PlayerSpawners
   - PlayerSpawnerAtStart
   - Turret
+  - WeaponHolder
   layers:
   - Default
   - TransparentFX

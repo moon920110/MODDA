@@ -48,7 +48,7 @@ public class WeaponManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerAnimator.SetTrigger(weaponType);
+        //playerAnimator.SetTrigger(weaponType);
     }
 
     /*private void OnDisable()
