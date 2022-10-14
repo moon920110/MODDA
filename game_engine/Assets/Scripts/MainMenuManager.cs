@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuManager : MonoBehaviour
+namespace DDA
 {
-    public void StartGame()
+    public class MainMenuManager : MonoBehaviour
     {
-        SceneManager.LoadScene(1);
-    }
+        public void StartGame()
+        {
+            SceneManager.LoadScene(1);
+        }
 
-    public void ExitGame()
-    {
-        Application.Quit();
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
     }
 }
-

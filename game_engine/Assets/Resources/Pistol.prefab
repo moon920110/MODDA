@@ -5499,7 +5499,7 @@ GameObject:
   - component: {fileID: 262980336204718291}
   - component: {fileID: 1929379924172639926}
   m_Layer: 0
-  m_Name: Pistol 1
+  m_Name: Pistol
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5684,16 +5684,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84789bb38391fcc4ab9e5d885400c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
+  gameManager: {fileID: 0}
   weaponManager: {fileID: 3810295168600909803}
-  rb: {fileID: 262980336204718291}
-  coll: {fileID: 1929379924172639926}
+  weapon: {fileID: 6980300275107731026}
+  weaponTaken: 0
   player: {fileID: 0}
-  weaponHolder: {fileID: 0}
-  fpsCam: {fileID: 0}
   equipped: 0
-  pickupRange: 4
-  dropForwardForce: 15
-  dropUpwardForce: 7
 --- !u!54 &262980336204718291
 Rigidbody:
   m_ObjectHideFlags: 0

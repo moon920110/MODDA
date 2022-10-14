@@ -3,55 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //using UnityEngine.UI;
-
-public class turretBullet : MonoBehaviour
+namespace DDA
 {
-    #region Variables
-    public float movementSpeed;
-    private GameObject target;
-    public GameObject bullet;
-    public GameObject playerObject;    
-    public float damage;
-    //public float turretFirerate = 100;
-    //float turretFirerateTimer = 0;
-    //public bool isTurretAutomatic;
-    #endregion
-
-    private void Start()
+    public class turretBullet : MonoBehaviour
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-    }
-    void Update()
-    {
-        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+        #region Variables
+        public float movementSpeed;
+        private GameObject target;
+        public GameObject bullet;
+        public GameObject playerObject;
+        public float damage;
+        //public float turretFirerate = 100;
+        //float turretFirerateTimer = 0;
+        //public bool isTurretAutomatic;
+        #endregion
 
-        /*if (turretFirerateTimer > 0)
+        private void Start()
         {
-            turretFirerateTimer = turretFirerateTimer - Time.deltaTime;
+            playerObject = GameObject.FindGameObjectWithTag("Player");
         }
-        if (turretFirerateTimer <= 0) // && isTurretAutomatic)
+        void Update()
         {
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-            turretFirerateTimer = 1 / turretFirerate;
+
+            /*if (turretFirerateTimer > 0)
+            {
+                turretFirerateTimer = turretFirerateTimer - Time.deltaTime;
+            }
+            if (turretFirerateTimer <= 0) // && isTurretAutomatic)
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+                turretFirerateTimer = 1 / turretFirerate;
+            }
+            if (turretFirerateTimer <= 0)// && !isTurretAutomatic)
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+                turretFirerateTimer = 1 / turretFirerate;
+
+            }*/
         }
-        if (turretFirerateTimer <= 0)// && !isTurretAutomatic)
+        void OnTriggerEnter(Collider other)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-            turretFirerateTimer = 1 / turretFirerate;
-            
-        }*/
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            target = other.gameObject;
-            Destroy(bullet, 0.000001f);
-            playerObject.GetComponent<PlayerManager>().Hit(damage);            
-        }
-        else if (other.tag == "Wall")
-        {
-            Destroy(bullet,0.0001f);
+            if (other.tag == "Player")
+            {
+                target = other.gameObject;
+                Destroy(bullet, 0.000001f);
+                playerObject.GetComponent<PlayerManager>().Hit(damage);
+            }
+            else if (other.tag == "Wall")
+            {
+                Destroy(bullet, 0.0001f);
+            }
         }
     }
 }

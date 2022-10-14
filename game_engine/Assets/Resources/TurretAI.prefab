@@ -619,7 +619,7 @@ MonoBehaviour:
   turretTop: {fileID: 6157693990610501667}
   bullet: {fileID: 6996567082809568521, guid: 269ed227176a4924f9eb0e5c8401eb6f, type: 3}
   bulletMovementSpeed: 0
-  fireTimer: 60
+  fireTimer: 20
   playerObject: {fileID: 1220269433656336692, guid: 8901efe1b7c4c1e42a16a3070b816aa9,
     type: 3}
   gameManager: {fileID: 0}

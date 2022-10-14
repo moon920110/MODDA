@@ -2,31 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretSpawner : MonoBehaviour
+namespace DDA
 {
-    #region Variables
-    public GameObject TurretAI;
-	public string EnemySpawnPointTag = "EnemySpawners";
-	public bool alwaysSpawn = true;	
-	public int xPos;
-	public int zPos;
-	public int EnemyCount;	
-	public GameObject prefabEnemyObject;
-	
-	#endregion
-	void Start()
-    {		
-		prefabEnemyObject = (GameObject)Resources.Load("TurretAI");		
-	}
-	void Update()
+	public class TurretSpawner : MonoBehaviour
 	{
-		// Spawns Enemies on pre-determined locations
-		prefabEnemyObject = (GameObject)Resources.Load("TurretAI");
-		if (Input.GetKeyDown("h")) 
-		{
+		#region Variables
+		public GameObject TurretAI;
+		public string EnemySpawnPointTag = "EnemySpawners";
+		public bool alwaysSpawn = true;
+		public int xPos;
+		public int zPos;
+		public int EnemyCount;
+		public GameObject prefabEnemyObject;
 
-			GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag(EnemySpawnPointTag);
-			
+		#endregion
+		void Start()
+		{
+			prefabEnemyObject = (GameObject)Resources.Load("TurretAI");
+		}
+		void Update()
+		{
+			// Spawns Enemies on pre-determined locations
+			prefabEnemyObject = (GameObject)Resources.Load("TurretAI");
+			if (Input.GetKeyDown("h"))
+			{
+
+				GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag(EnemySpawnPointTag);
+
 				foreach (GameObject spawnPoint in spawnPoints)
 				{
 					//int randomPrefab = Random.Range(0, prefabsToSpawn.Count); // When we have several kinds of enemies
@@ -45,29 +47,30 @@ public class TurretSpawner : MonoBehaviour
 						}
 					}
 				}
-			
 
+
+			}
+
+			// Spawns Enemies on random locations
+			if (Input.GetKeyDown("j"))
+			{
+				StartCoroutine(randomEnemySpawn());
+			}
 		}
-
-		// Spawns Enemies on random locations
-		if (Input.GetKeyDown("j")) 
+		IEnumerator randomEnemySpawn() // Spawns Enemies on random locations
 		{
-			StartCoroutine(randomEnemySpawn());
+			//EnemyCount = GameObject.FindGameObjectsWithTag("Turret").Length;
+			while (EnemyCount <= 15)
+			{
+				xPos = Random.Range(-40, 40);
+				zPos = Random.Range(-40, 40);
+				Instantiate(Resources.Load("TurretAI"), new Vector3(xPos, 0, zPos), Quaternion.identity);
+
+				yield return new WaitForSeconds(0.1f);
+				EnemyCount += 1;
+			}
+
 		}
 	}
-	IEnumerator randomEnemySpawn() // Spawns Enemies on random locations
-	{
-		//EnemyCount = GameObject.FindGameObjectsWithTag("Turret").Length;
-		while (EnemyCount <= 15)
-		{
-			xPos = Random.Range(-40, 40);
-			zPos = Random.Range(-40, 40);
-			Instantiate(Resources.Load("TurretAI"), new Vector3(xPos, 0, zPos), Quaternion.identity);
 
-			yield return new WaitForSeconds(0.1f);
-			EnemyCount += 1;
-		}
-		
-	}
 }
-
